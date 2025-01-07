@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.ComponentModel;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 using System.Threading.Tasks;
 using Mono.Addins.Localization;
@@ -60,7 +61,7 @@ public sealed class SimpleEffectDialog : Gtk.Dialog
 
 		Title = title;
 		TransientFor = PintaCore.Chrome.MainWindow;
-		Modal = true;
+		Modal = false;
 		IconName = iconName;
 		WidthRequest = 400;
 		Resizable = false;
@@ -77,6 +78,9 @@ public sealed class SimpleEffectDialog : Gtk.Dialog
 		contentAreaBox.SetAllMargins (6);
 		foreach (var widget in GenerateDialogWidgets (effectData, localizer))
 			contentAreaBox.Append (widget);
+
+		var parentWindow = PintaCore.Chrome.MainWindow;
+
 
 		OnClose += (_, _) => HandleClose ();
 	}
