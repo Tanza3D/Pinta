@@ -79,9 +79,6 @@ public sealed class SimpleEffectDialog : Gtk.Dialog
 		foreach (var widget in GenerateDialogWidgets (effectData, localizer))
 			contentAreaBox.Append (widget);
 
-		var parentWindow = PintaCore.Chrome.MainWindow;
-
-
 		OnClose += (_, _) => HandleClose ();
 	}
 
